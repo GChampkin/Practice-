@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">  
+<title>Interactive Selector Wheel</title>
+<style>
+body { display: flex;  
+       justify-content: center; 
+      align-items: center; 
+       height: 100vh; 
+margin: 0; } 
+#wheel { width: 300px; 
+height: 300px; 
+border-radius: 50%; 
+border: 5px solid #000; 
+position: relative; } 
+.segment { width: 150px; 
+height: 150px; 
+position: absolute; 
+top: 0; 
+left: 0; 
+background: lightblue; 
+clip-path: polygon(100% 0, 0 0, 0 100%); 
+transform-origin: bottom right; } 
+#wheel div:nth-child(1) { transform: rotate(0deg); 
+background-color: lightcoral; } 
+#wheel div:nth-child(2) { transform: rotate(36deg); 
+background-color: lightgreen; } 
+#wheel div:nth-child(3) { transform: rotate(72deg); 
+background-color: lightblue; } 
+#wheel div:nth-child(4) { transform: rotate(108deg); 
+background-color: lightyellow; } 
+#wheel div:nth-child(5) { transform: rotate(144deg); 
+background-color: lightpink; } 
+#wheel div:nth-child(6) { transform: rotate(180deg); 
+background-color: lightgray; } 
+#wheel div:nth-child(7) { transform: rotate(216deg); 
+background-color: lightcyan; } 
+#wheel div:nth-child(8) { transform: rotate(252deg); 
+background-color: lightgoldenrodyellow; } 
+#wheel div:nth-child(9) { transform: rotate(288deg); 
+background-color: lightsalmon; } 
+#wheel div:nth-child(10) { transform: rotate(324deg); 
+background-color: lightsteelblue; } 
+.segment p { position: absolute; 
+top: 50%; 
+left: 50%; 
+transform: translate(-50%, -50%); 
+margin: 0; 
+font-size: 14px; 
+font-weight: bold; } 
+</style> 
+</head> 
+<body> 
+<div id="wheel"> 
+<div class="segment">
+<p>Esucho</p>
+</div> 
+<div class="segment">
+<p>Mando</p>
+</div> <div class="segment">
+<p>Recibo</p>
+</div> 
+<div class="segment">
+<p>Leo</p>
+</div> 
+<div class="segment">
+<p>Saco</p>
+</div> 
+<div class="segment">
+<p>Veo</p>
+</div> 
+<div class="segment">
+<p>Chateo</p>
+</div> 
+<div class="segment">
+<p>Hago</p>
+</div> 
+<div class="segment">
+<p>Juego</p>
+</div> 
+<div class="segment">
+<p>Compro</p>
+</div> 
+</div> 
+<script> 
+let wheel = document.getElementById('wheel'); 
+let spinning = false; 
+let deg = 0; 
+function spinWheel() { 
+if (spinning) return; 
+spinning = true; 
+deg = Math.floor(5000 + Math.random() * 5000); 
+wheel.style.transition = 'all 5s ease-out'; 
+wheel.style.transform = `rotate(${deg}deg)`; 
+setTimeout(() => { wheel.style.transition = 'none'; 
+const actualDeg = deg % 360; 
+wheel.style.transform = `rotate(${actualDeg}deg)`; 
+spinning = false; }, 5000); } 
+wheel.addEventListener('click', spinWheel); </script>
+</body>
